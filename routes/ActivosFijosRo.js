@@ -13,7 +13,9 @@ router.put('/actualizaReserva',ActivosFijosCont.ActualizarReserva);
 router.put('/procesar',ActivosFijosCont.procesar);
 router.put('/cambiar',ActivosFijosCont.cambiar);
 router.post('/mostrarProductos',ActivosFijosCont.mostrarProductos);
+router.post('/mostrarProductosweb',ActivosFijosCont.mostrarProductosweb);
 router.post('/comprobarCodigo',ActivosFijosCont.comprobarCodigo);
+
 
 
 export default router;

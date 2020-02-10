@@ -372,5 +372,47 @@ export default {
             next(e);
         }
 
+    },
+    //Busca datos con filtro
+    mostrarMovimientosWeb: async (req, res, next) => {
+        try {
+            console.log(req.body)
+            const movimientos=await models.Movimiento.find({'Estado': 1, "empresas" : req.body._id})
+            .populate('empresas','Nombre_Empresa',models.Empresa)
+            .populate('Bodega_Origen','Descripcion',models.Bodega)
+            .populate('Bodega_Destino','Descripcion',models.Bodega)
+            .populate('Detalles.productos','Descripcion',models.Activosfijos)
+            .sort({'createdAt':-1});
+
+            let response = {movimientos}
+            res.status(200).json(response);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
+
+    },
+    //Busca datos con filtro
+    buscarXNumeroDocumento: async (req, res, next) => {
+        try {
+            console.log(req.body)
+            const movimientos=await models.Movimiento.find({ "empresas" : req.body._id,"Numero_Documento" : req.body.Numero_Documento})
+            .populate('empresas','Nombre_Empresa',models.Empresa)
+            .populate('Bodega_Origen','Descripcion',models.Bodega)
+            .populate('Bodega_Destino','Descripcion',models.Bodega)
+            .populate('Detalles.productos','Descripcion',models.Activosfijos)
+            .sort({'createdAt':-1});
+
+            let response = {movimientos}
+            res.status(200).json(response);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
+
     }
 }

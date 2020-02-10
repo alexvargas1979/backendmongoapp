@@ -279,5 +279,21 @@ export default {
             res.status(500).send({output});
             next(e);      
         }
+    }, mostrarProductosweb: async (req,res,next) => {
+        try {
+
+            console.log(req.body._id)
+            const productos=await models.Activosfijos.find({"empresas" : req.body._id})
+            .populate('empresas','Nombre_Empresa',models.Empresa)
+            .populate('bodegas','Nombre',models.Bodega)
+            .sort({'createdAt':-1});
+            let response = {productos}
+            res.status(200).json(response);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
     }
 }

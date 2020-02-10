@@ -18,6 +18,8 @@ router.delete('/remove',MovimientoCont.remove);
 router.put('/update',MovimientoCont.update);
 router.put('/cambiarEstado',MovimientoCont.cambiarEstado);
 router.post('/mostrarMovimientos',MovimientoCont.mostrarMovimientos);
+router.post('/mostrarMovimientosweb',MovimientoCont.mostrarMovimientosWeb);
+router.post('/buscarXNumeroDocumento',MovimientoCont.buscarXNumeroDocumento);
 
 
 export default router;
