@@ -382,6 +382,7 @@ export default {
             .populate('Bodega_Origen','Descripcion',models.Bodega)
             .populate('Bodega_Destino','Descripcion',models.Bodega)
             .populate('Detalles.productos','Descripcion',models.Activosfijos)
+            .populate('Detalles.productos','Codigo',models.Activosfijos)
             .sort({'createdAt':-1});
 
             let response = {movimientos}
@@ -414,5 +415,17 @@ export default {
             next(e);
         }
 
+    },
+    actualizarObservaciones: async (req,res,next) => {
+        try {
+            const reg = await models.Movimiento.update({Numero_Documento:req.body.Numero_Documento}, { $set: { Observaciones : req.body.Observaciones }});
+            res.status(200).json(reg);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
+   
     }
 }
