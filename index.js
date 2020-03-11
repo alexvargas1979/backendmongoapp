@@ -20,10 +20,15 @@ mongoose.connect(dbUrl, {useCreateIndex:true, useNewUrlParser: true,  socketTime
 .catch(err => console.log(err));
 
 
+
+
 const app=express();
+
+app.set('port',process.env.PORT || 4000);
+app.set('localhost', '0.0.0.0');
+
 app.use(morgan('dev'));
 app.use(cors());
-
 
 
 app.use(express.json({limit: '50mb', extended: true}))
@@ -33,7 +38,7 @@ app.use(express.static(path.join(__dirname,'public')))
 
 
 app.use('/api',router);
-app.set('port',process.env.PORT || 3000);
+
 
 app.listen(app.get('port'),()=>{
     console.log('server on port ' + app.get('port'));

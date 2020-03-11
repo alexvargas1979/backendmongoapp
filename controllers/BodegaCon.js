@@ -83,7 +83,8 @@ export default {
     },
     update: async (req,res,next) => {
         try {
-            const reg = await models.Bodega.findByIdAndUpdate({_id:req.body._id},{Nombre_Bodega:req.body.Nombre_Bodega,descripcion:req.body.descripcion});
+
+            const reg = await models.Bodega.findByIdAndUpdate({_id:req.body._id},{Nombre:req.body.Nombre,Descripcion:req.body.Descripcion,Ciudad:req.body.Ciudad});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({

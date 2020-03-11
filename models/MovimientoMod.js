@@ -23,9 +23,9 @@ const MovimientoSchema = new Schema({
     Prioridad:{ type:String,maxlength:20,required:false},
     Estado_Documento:{ type:String,maxlength:10,required:true},
     Observaciones:{ type:String,maxlength:500,required:false},  
-    Fecha_Creacion: { type: Date, default: Date.now },
+    Fecha_Creacion: { type: String,maxlength:50 },
     Estado: { type:Number, default:1},
-    Fecha_Procesado: { type: Date,required:false },
+    Fecha_Procesado: { type:String,maxlength:50,required:false},
     Numero_Documento_Cliente:{ type:String,maxlength:20,required:false}
 
 }, {

@@ -295,5 +295,15 @@ export default {
             });
             next(e);
         }
+    }, listarActivos: async (req,res,next) => {
+        try {
+            const productos=await models.Activosfijos.find({})
+            res.status(200).json(productos);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
     }
 }

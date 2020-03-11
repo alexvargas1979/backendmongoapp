@@ -346,7 +346,7 @@ export default {
     cambiarEstado: async (req,res,next) => {
         try {
             //this.ids = [['Tipo_Documento', "Centro_Costos", "Prioridad", "Estado_Documento","Observaciones", "Fecha_Creacion"],[]];
-            const reg = await models.Movimiento.update({Numero_Documento:req.body.Numero_Documento}, { $set: { Estado_Documento : 'PR' }});
+            const reg = await models.Movimiento.update({Numero_Documento:req.body.Numero_Documento}, { $set: { Estado_Documento : 'PR', Fecha_Procesado : req.body.Fecha_Procesado}});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({

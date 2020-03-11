@@ -15,7 +15,10 @@ router.put('/cambiar',ActivosFijosCont.cambiar);
 router.post('/mostrarProductos',ActivosFijosCont.mostrarProductos);
 router.post('/mostrarProductosweb',ActivosFijosCont.mostrarProductosweb);
 router.post('/comprobarCodigo',ActivosFijosCont.comprobarCodigo);
-
+router.get('/obtenerDetalle',ActivosFijosCont.listarActivos);
 
 
 export default router;
+
+
+
