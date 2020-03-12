@@ -14,16 +14,17 @@ const MovimientoSchema = new Schema({
     Detalles: [{
         Numero_Documento_Afectado:{ type:String,maxlength:20,required:false},
         productos:{ type: Schema.ObjectId, ref: 'productos',required:false }, 
-        Cantidad:{type:Number,required:false},
+        Cantidad:{type: String,maxlength:50,required:false},
         Precio:{type:Number, required:false},
         Unidad_Medida:{ type:String,maxlength:20,required:false}
     }],
     Responsable:{ type:String,maxlength:20,required:false},
+    Placa_Vehiculo:{ type:String,maxlength:20,required:false},
     Centro_Costos:{ type:String,maxlength:20,required:false},
     Prioridad:{ type:String,maxlength:20,required:false},
     Estado_Documento:{ type:String,maxlength:10,required:true},
     Observaciones:{ type:String,maxlength:500,required:false},  
-    Fecha_Creacion: { type: String,maxlength:50 },
+    Fecha_Creacion: { type: String,maxlength:50},
     Estado: { type:Number, default:1},
     Fecha_Procesado: { type:String,maxlength:50,required:false},
     Numero_Documento_Cliente:{ type:String,maxlength:20,required:false}

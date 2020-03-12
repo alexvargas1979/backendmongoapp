@@ -244,7 +244,7 @@ export default {
 
 
           //  let recordset = await ModMovimiento.update({Numero_Documento:numero_documento}, {$push: {Detalles:{ $each: [ { Numero_Documento_Afectado: numero_documento_afectado,productos: productos, Cantidad: cantidad, Precio: precio,Unidad_Medida: unidad_medida }]}}})
-          let recordset = await ModMovimiento.update({Numero_Documento:numero_documento}, {$push: {Detalles:{ $each: [ { productos: productos }]}}})
+          let recordset = await ModMovimiento.update({Numero_Documento:numero_documento}, {$push: {Detalles:{ $each: [ { productos: productos, Cantidad: cantidad}]}}})
 
 
             if (recordset){
