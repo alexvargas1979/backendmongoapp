@@ -173,6 +173,17 @@ mostrarBodegas: async (req,res,next) => {
         next(e);
     }
 },
+bodegas: async (req,res,next) => {
+    try {
+        const reg=await models.Bodega.find({})
+        res.status(200).json(reg);
+    } catch(e){
+        res.status(500).send({
+            message:'Ocurrió un error'
+        });
+        next(e);
+    }
+}
 }
 
 

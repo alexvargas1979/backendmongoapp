@@ -16,6 +16,7 @@ router.post('/mostrarProductos',ActivosFijosCont.mostrarProductos);
 router.post('/mostrarProductosweb',ActivosFijosCont.mostrarProductosweb);
 router.post('/comprobarCodigo',ActivosFijosCont.comprobarCodigo);
 router.get('/obtenerDetalle',ActivosFijosCont.listarActivos);
+router.post('/listarXBodega',ActivosFijosCont.listarActivosXBodega);
 
 
 export default router;

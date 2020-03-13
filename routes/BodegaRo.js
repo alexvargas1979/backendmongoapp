@@ -13,6 +13,8 @@ router.put('/deactivate',BodegaCont.deactivate);
 router.post('/BuscarBodegaxEmpresa', BodegaCont.BuscarBodegaxEmpresa);
 router.put('/cambiar',BodegaCont.cambiar);
 router.post('/mostrarBodegas', BodegaCont.mostrarBodegas);
+router.get('/bodegas', BodegaCont.bodegas);
+
 
 
 

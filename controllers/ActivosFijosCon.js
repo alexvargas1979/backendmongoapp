@@ -305,5 +305,15 @@ export default {
             });
             next(e);
         }
+    }, listarActivosXBodega: async (req,res,next) => {
+        try {
+            const productos=await models.Activosfijos.find({bodegas: req.body.id_Bodega})
+            res.status(200).json(productos);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
     }
 }
