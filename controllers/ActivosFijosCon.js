@@ -315,5 +315,16 @@ export default {
             });
             next(e);
         }
+    }, actualizarBodegas: async (req,res,next) => {
+        try {
+            console.log(req.body.Codigo)
+            const recordset= await models.Activosfijos.updateOne( {'Codigo' : req.body.Codigo },{"$set":{"bodegas": req.body.bodegas}}); 
+            res.status(200).json({ code: '200' });
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
     }
 }

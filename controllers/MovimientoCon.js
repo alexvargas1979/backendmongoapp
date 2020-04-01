@@ -381,8 +381,7 @@ export default {
             .populate('empresas','Nombre_Empresa',models.Empresa)
             .populate('Bodega_Origen','Descripcion',models.Bodega)
             .populate('Bodega_Destino','Descripcion',models.Bodega)
-            .populate('Detalles.productos','Descripcion',models.Activosfijos)
-            .populate('Detalles.productos','Codigo',models.Activosfijos)
+            .populate('Detalles.productos','Codigo Descripcion',models.Activosfijos) 
             .sort({'createdAt':-1});
 
             let response = {movimientos}
