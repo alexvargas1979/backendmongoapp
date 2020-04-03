@@ -426,5 +426,20 @@ export default {
             next(e);
         }
    
+    },
+    filtrarMovimientosFecha: async (req,res,next) => {
+        try {
+            //Formato año/mes/dia
+            console.log(req.body.FECHA_INICIAL)
+            console.log(req.body.FECHA_FINAL)
+            const reg = await models.Movimiento.find({"Fecha_Filtro":{ $gte:new Date(req.body.FECHA_INICIAL), $lt:new Date(req.body.FECHA_FINAL) }})
+            res.status(200).json(reg);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
+   
     }
 }

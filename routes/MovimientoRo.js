@@ -21,6 +21,7 @@ router.post('/mostrarMovimientos',MovimientoCont.mostrarMovimientos);
 router.post('/mostrarMovimientosweb',MovimientoCont.mostrarMovimientosWeb);
 router.post('/buscarXNumeroDocumento',MovimientoCont.buscarXNumeroDocumento);
 router.put('/actualizarObservaciones',MovimientoCont.actualizarObservaciones);
+router.post('/filtrarfecha',MovimientoCont.filtrarMovimientosFecha);
 
 
 export default router;

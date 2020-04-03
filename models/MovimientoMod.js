@@ -25,6 +25,7 @@ const MovimientoSchema = new Schema({
     Estado_Documento:{ type:String,maxlength:10,required:true},
     Observaciones:{ type:String,maxlength:500,required:false},  
     Fecha_Creacion: { type: String,maxlength:50},
+    Fecha_Filtro: { type: Date, default: Date.now()},
     Estado: { type:Number, default:1},
     Fecha_Procesado: { type:String,maxlength:50,required:false},
     Numero_Documento_Cliente:{ type:String,maxlength:20,required:false}
