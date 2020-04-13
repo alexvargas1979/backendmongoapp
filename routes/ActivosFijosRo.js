@@ -20,6 +20,7 @@ router.post('/listarXBodega',ActivosFijosCont.listarActivosXBodega);
 router.post('/actualizarBodegas',ActivosFijosCont.actualizarBodegas);
 
 
+
 export default router;
 
 

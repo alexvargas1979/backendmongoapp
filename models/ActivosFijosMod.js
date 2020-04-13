@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import ModBodega from '../models/BodegaMod';
 
 
 const ActivosFijosSchema = new Schema({
@@ -9,12 +10,11 @@ const ActivosFijosSchema = new Schema({
     Descripcion: { type: String, maxlength: 200, required: false },
     Marca: { type: String, maxlength: 100, required: false },
     Grupo: { type: String, maxlength: 100, required: false },
-    bodegas: { type: Schema.ObjectId, ref: 'bodegas', required: false},
+    bodegas: { type: Schema.ObjectId, ref: ModBodega, required: false},
+    bodega_filtro: { type: String, maxlength: 100, required: false },
     Reservado: { type: Boolean, default: false },
     Estado: { type: Number, default: 1 },
     Fecha_Creacion: { type: Date, default: Date.now }
-
-
 }, {
     versionKey: false // You should be aware of the outcome after set to false
 });
