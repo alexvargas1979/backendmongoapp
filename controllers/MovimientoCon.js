@@ -429,11 +429,15 @@ export default {
     },
     filtrarMovimientosFecha: async (req,res,next) => {
         try {
-            //Formato año/mes/dia
-            console.log(req.body.FECHA_INICIAL)
-            console.log(req.body.FECHA_FINAL)
-            const reg = await models.Movimiento.find({"Fecha_Filtro":{ $gte:new Date(req.body.FECHA_INICIAL), $lt:new Date(req.body.FECHA_FINAL) }})
-            res.status(200).json(reg);
+            const movimientos = await models.Movimiento.find({"Fecha_Filtro":{ $gte:new Date(req.body.FECHA_INICIAL), $lt:new Date(req.body.FECHA_FINAL) }})
+            .populate('empresas','Nombre_Empresa',models.Empresa)
+            .populate('Bodega_Origen','Descripcion',models.Bodega)
+            .populate('Bodega_Destino','Descripcion',models.Bodega)
+            .populate('Detalles.productos','Codigo Descripcion',models.Activosfijos) 
+            .sort({'createdAt':-1});
+            
+            let response = {movimientos}
+            res.status(200).json(response);
         } catch(e){
             res.status(500).send({
                 message:'Ocurrió un error'
