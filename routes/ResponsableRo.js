@@ -5,8 +5,8 @@ const router = routerx();
 
 router.post('/guardar', ResponsableCont.Guardar);
 router.get('/listar', ResponsableCont.Listar);
-router.delete('/remove',ResponsableCont.remove);
-router.put('/update',ResponsableCont.update);
+router.delete('/remove', ResponsableCont.remove);
+router.put('/update', ResponsableCont.update);
 router.post('/BuscarResponsablexEmpresa', ResponsableCont.BuscarResponsablexEmpresa);
 router.post('/mostrarResponsable', ResponsableCont.mostrarResponsable);
 

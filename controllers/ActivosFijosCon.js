@@ -4,7 +4,6 @@ export default {
 
     Guardar: async (req, res, next) => {
         try {
-            //const reg = await models.Articulo.create(req.body);
             console.log(req.body)
             const reg = await models.Activosfijos.create(req.body);
             res.status(200).json(reg);
@@ -102,7 +101,6 @@ export default {
 
     update: async (req, res, next) => {
         try {
-            //{Codigo:{type:'TextField'},Descripcion:{type:'TextField'},Marca:{type:'TextField'},Grupo:{type:'TextField'}
             const reg = await models.Activosfijos.findByIdAndUpdate({ _id: req.body._id }, { Codigo: req.body.Codigo, Descripcion: req.body.Descripcion, Grupo: req.body.Grupo });
             res.status(200).json(reg);
         } catch (e) {
@@ -143,7 +141,6 @@ export default {
             if (recordset) {
                 let output = { "Respuesta": "1", "Mensaje": "OK", "Numero_Documento": recordset.Numero_Documento }
                 res.status(200).json({ output });
-                // res.status(200).json({output,recordset});
                 console.log(recordset.Numero_Documento);
 
             } else {
@@ -196,23 +193,11 @@ export default {
             const _id = req.body._id
             const nueva_bodega = req.body.nueva_bodega
 
-
-
-            /**
-             * {"$inc":{"killed":-3}}
-             * */
-
-
-            //  const Actualizar = { "Detalles.$.Cantidad_Reservada" : V_Cant_Reservada }
-
             const recordset = await models.Activosfijos.findOneAndUpdate({ '_id': _id }, { "$set": { "bodegas": nueva_bodega, "Reservado": false } });
 
             if (recordset) {
                 let output = { "Respuesta": "0", "Mensaje": "El dato se actualizo correctamente" }
                 res.status(200).send({ output });
-                // res.status(200).json({output,recordset});
-
-
             } else {
                 let output = { "Respuesta": "0", "Mensaje": "El dato se actualizo correctamente" }
                 res.status(200).send({ output });
@@ -224,27 +209,16 @@ export default {
             next(e);
         }
     },
-    cambiar: async (req, res, next) => {
+    cambiarE: async (req, res, next) => {
         try {
             const _id = req.body._id
             const nueva_bodega = req.body.nueva_bodega
-
-
-
-            /**
-             * {"$inc":{"killed":-3}}
-             * */
-
-
-            //  const Actualizar = { "Detalles.$.Cantidad_Reservada" : V_Cant_Reservada }
 
             const recordset = await models.Activosfijos.updateMany({ 'Estado': '1' }, { "$set": { "empresas": "5e2f4c3ef80d8246f0e545d8" } }, { multi: true });
 
             if (recordset) {
                 let output = { "Respuesta": "0", "Mensaje": "El dato se actualizo correctamente" }
                 res.status(200).send({ output });
-                // res.status(200).json({output,recordset});
-
 
             } else {
                 let output = { "Respuesta": "0", "Mensaje": "El dato se actualizo correctamente" }
@@ -284,9 +258,9 @@ export default {
 
             let valor = req.body.valor;
             valor = valor.trim()
-            const productos = await models.Activosfijos.find({ $or: [{ 'Codigo': new RegExp(valor, 'i') }, { 'Descripcion': new RegExp(valor, 'i') }, { 'Marca': new RegExp(valor, 'i') }, { 'Grupo': new RegExp(valor, 'i') }, { 'bodega_filtro': new RegExp(valor, 'i') } ] }, { createdAt: 0 })
+            const productos = await models.Activosfijos.find({ $or: [{ 'Codigo': new RegExp(valor, 'i') }, { 'Descripcion': new RegExp(valor, 'i') }, { 'Marca': new RegExp(valor, 'i') }, { 'Grupo': new RegExp(valor, 'i') }, { 'bodega_filtro': new RegExp(valor, 'i') }] }, { createdAt: 0 })
                 .populate('empresas', 'Nombre_Empresa', models.Empresa)
-                .populate('bodegas' , 'Nombre')
+                .populate('bodegas', 'Nombre')
                 .sort({ 'createdAt': -1 });
 
             let response = { productos }

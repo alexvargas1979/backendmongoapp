@@ -10,10 +10,10 @@ const ProductoSchema = new Schema({
     Marca: { type: String, maxlength: 100, required: false },
     Grupo: { type: String, maxlength: 100, required: false },
     Detalles: [{
-        bodegas: { type: Schema.ObjectId, ref: 'bodegas', required: false},
+        bodegas: { type: Schema.ObjectId, ref: 'bodegas', required: false },
         Cantidad: { type: Number, required: false },
         Cantidad_Reservada: { type: Number, required: false, default: 0 },
-        Unidad_Medida: { type: String, maxlength: 20, required:false },
+        Unidad_Medida: { type: String, maxlength: 20, required: false },
         Precio: { type: Number, required: false }
     }],
     Talla: { type: String, required: false },

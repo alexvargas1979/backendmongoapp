@@ -9,7 +9,7 @@ const MovimientosBombay = new Schema({
     Descripcion: { type: String, maxlength: 200, required: false },
     Marca: { type: String, maxlength: 100, required: false },
     Grupo: { type: String, maxlength: 100, required: false },
-    bodegas: { type: Schema.ObjectId, ref: 'bodegas', required: false},
+    bodegas: { type: Schema.ObjectId, ref: 'bodegas', required: false },
     Reservado: { type: Boolean, default: false },
     Estado: { type: Number, default: 1 },
     Fecha_Creacion: { type: Date, default: Date.now }
