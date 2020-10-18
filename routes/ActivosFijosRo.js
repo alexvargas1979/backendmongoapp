@@ -22,6 +22,3 @@ router.post('/actualizarBodegas', ActivosFijosCont.actualizarBodegas);
 
 
 export default router;
-
-
-

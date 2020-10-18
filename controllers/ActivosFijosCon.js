@@ -2,7 +2,7 @@
 
 export default {
 
-    Guardar: async (req, res, next) => {
+    Guardar: async(req, res, next) => {
         try {
             console.log(req.body)
             const reg = await models.Activosfijos.create(req.body);
@@ -14,7 +14,7 @@ export default {
             next(e);
         }
     },
-    list: async (req, res, next) => {
+    list: async(req, res, next) => {
         try {
 
             let valor = req.query.valor;
@@ -30,7 +30,7 @@ export default {
             next(e);
         }
     },
-    mostrarProductos: async (req, res, next) => {
+    mostrarProductos: async(req, res, next) => {
         try {
 
             console.log(req.body._id)
@@ -46,7 +46,7 @@ export default {
             next(e);
         }
     },
-    BuscarAFxEmpresa: async (req, res, next) => {
+    BuscarAFxEmpresa: async(req, res, next) => {
         try {
             const V_Codigo = req.body.Codigo
             const V_Empresa = req.body.Cod_Empresa
@@ -75,7 +75,7 @@ export default {
 
 
     },
-    buscarPorId: async (req, res, next) => {
+    buscarPorId: async(req, res, next) => {
         try {
 
             let valor = req.query.valor;
@@ -99,7 +99,7 @@ export default {
         }
     },
 
-    update: async (req, res, next) => {
+    update: async(req, res, next) => {
         try {
             const reg = await models.Activosfijos.findByIdAndUpdate({ _id: req.body._id }, { Codigo: req.body.Codigo, Descripcion: req.body.Descripcion, Grupo: req.body.Grupo });
             res.status(200).json(reg);
@@ -109,7 +109,8 @@ export default {
             });
             next(e);
         }
-    }, remove: async (req, res, next) => {
+    },
+    remove: async(req, res, next) => {
         try {
             const reg = await models.Activosfijos.findByIdAndDelete({ _id: req.body._id });
             console.log("El dato fue con id " + req.body._id + " fue eliminado");
@@ -120,7 +121,8 @@ export default {
             });
             next(e);
         }
-    }, actualizarDocumento: async (req, res, next) => {
+    },
+    actualizarDocumento: async(req, res, next) => {
         try {
 
             const numero_documento = req.body.Numero_Documento
@@ -155,7 +157,7 @@ export default {
             next(e);
         }
     },
-    ActualizarReserva: async (req, res, next) => {
+    ActualizarReserva: async(req, res, next) => {
         try {
             const _id = req.body._id
             const V_Reservado = req.body.V_Reservado
@@ -188,7 +190,7 @@ export default {
             next(e);
         }
     },
-    procesar: async (req, res, next) => {
+    procesar: async(req, res, next) => {
         try {
             const _id = req.body._id
             const nueva_bodega = req.body.nueva_bodega
@@ -209,7 +211,7 @@ export default {
             next(e);
         }
     },
-    cambiarE: async (req, res, next) => {
+    cambiar: async(req, res, next) => {
         try {
             const _id = req.body._id
             const nueva_bodega = req.body.nueva_bodega
@@ -231,7 +233,7 @@ export default {
             next(e);
         }
     },
-    comprobarCodigo: async (req, res, next) => {
+    comprobarCodigo: async(req, res, next) => {
         try {
 
             console.log(req.body.Codigo + "codigo")
@@ -253,7 +255,8 @@ export default {
             res.status(500).send({ output });
             next(e);
         }
-    }, mostrarProductosweb: async (req, res, next) => {
+    },
+    mostrarProductosweb: async(req, res, next) => {
         try {
 
             let valor = req.body.valor;
@@ -271,7 +274,8 @@ export default {
             });
             next(e);
         }
-    }, listarActivos: async (req, res, next) => {
+    },
+    listarActivos: async(req, res, next) => {
         try {
             const productos = await models.Activosfijos.find({})
             res.status(200).json(productos);
@@ -281,7 +285,8 @@ export default {
             });
             next(e);
         }
-    }, listarActivosXBodega: async (req, res, next) => {
+    },
+    listarActivosXBodega: async(req, res, next) => {
         try {
             const productos = await models.Activosfijos.find({ bodegas: req.body.id_Bodega })
             res.status(200).json(productos);
@@ -291,7 +296,8 @@ export default {
             });
             next(e);
         }
-    }, actualizarBodegas: async (req, res, next) => {
+    },
+    actualizarBodegas: async(req, res, next) => {
         try {
             console.log(req.body.Codigo)
             const recordset = await models.Activosfijos.updateOne({ 'Codigo': req.body.Codigo }, { "$set": { "bodegas": req.body.bodegas } });
